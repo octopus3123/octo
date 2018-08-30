@@ -1,0 +1,32 @@
+const oynat = require('./oynat');
+queue = oynat.playQueue;
+
+module.exports.run = async (Octopus, message, args) => {
+    if(!queue.get(message.guild.id)) return message.channel.send("Müzik Sırası Oluşturulmamış")
+        .then(msg => {
+            msg.delete(10000)
+        });
+    if(queue.get(message.guild.id).playing) return message.channel.send("Müzik Sıran Şuanda Devam Ediyor")
+        .then(msg => {
+            msg.delete(10000)
+        });
+    queue.get(message.guild.id).connection.dispatcher.resume();
+    message.channel.send("Müzik Sıran Şuanda Devam Ediyor")
+        .then(msg => {
+            msg.delete(10000)
+        });
+    queue.get(message.guild.id).playing = true;
+    return;
+    
+};
+
+exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: [],
+  permLevel: 0
+};
+
+exports.help = {
+  name: 'devamEt'
+};
