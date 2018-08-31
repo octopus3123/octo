@@ -8,5 +8,4 @@ module.exports = Octopus => {
   Octopus.on('message', reqEvent('Yanıt'));
   Octopus.on('guildMemberAdd', reqEvent('SunucuyaÜyeEklemeYanıtı'));
   Octopus.on('guildMemberRemove', reqEvent('SunucudanÜyeÇıkarmaYanıtı'));
-  Octopus.on('guildMemberUpdate', reqEvent('SunucuÜyeGüncellemeYanıtı'));
 };
