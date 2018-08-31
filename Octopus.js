@@ -12,8 +12,6 @@ const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
 require('./konsol/Algorithm.js')(Octopus);
-    const DBL = require("dblapi.js");
-    const dbl = new DBL(process.env.DBL_TOKEN, Octopus);
 
 var prefix = main.prefix;
 var ad = main.ad;
@@ -89,21 +87,18 @@ Octopus.unload = command => {
 function OctopusDurumu() {
   let status = [
     ` Komut Sayfası İçin ${prefix}yardım. `,
-    ` Sürümüm: ${surum}. `,
     ` ${surum} Yeniliklerine Bakmak İçin ${prefix}sürümNotları. `,
     ` ${Octopus.guilds.size} Sunucuya Hizmet Vermekteyim `,
     ` Geliştiricim ${ad} `,
     ` Hataya Rastlarsanız ${prefix}hataRaporla `,
     ` Önerileriniz İçin ${prefix}öner `,
-    ` ${Octopus.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} Kullanıcıya Hizmet Vermekteyim. ` // Octopus Oyunu
+    ` Artık 7/24 Aktifim `
     ];
     let OctoDurumu = Math.floor(Math.random() * status.length);
 
     Octopus.user.setActivity(status[OctoDurumu], {type: "WATCHING"}); // Octopus Durumu
     }; setInterval(OctopusDurumu, 5600)
        setInterval(() => {
-	   dbl.postStats(Octopus.guilds.size)
-       }, 1800000);
 
 //Küfür & Cevap Filitresi
 Octopus.on('message', msg => {
@@ -123,22 +118,37 @@ Octopus.on('message', msg => {
    	msg.reply('Sanada Güle Güle');
   }
   
-  if (msg.content === 'octopus') {
+  if (msg.content === 'r4dar') {
+    msg.reply('Efendim Aşkım ?');
+  }
+
+  if (msg.content === 'radar') {
     msg.reply('Efendim Aşkım ?');
   }
   
-  if (msg.content === 'octopus seni sikerim') {
+  if (msg.content === 'r4dar seni sikerim') {
+   	msg.reply('Benim Götüm Yokki Sikesin Git Sahibimi Sik');
+  }
+
+  if (msg.content === 'radar seni sikerim') {
    	msg.reply('Benim Götüm Yokki Sikesin Git Sahibimi Sik');
   }
   
-  if (msg.content === 'octopus nasılsın') {
+  if (msg.content === 'r4dar nasılsın') {
    	msg.reply('Allaha Şükür İyiyim Sen?');
   }
-  
-  if (msg.content === 'octopus iyiyim') {
+
+  if (msg.content === 'radar nasılsın') {
+	msg.reply('Allaha Şükür İyiyim Sen?');
+  }
+
+  if (msg.content === 'r4dar iyiyim') {
    	msg.reply('Allah İyilik Versin');
   }
-  
+
+  if (msg.content === 'radar iyiyim') {
+        msg.reply('Allah İyilik Versin');
+      
   });
 
 Octopus.elevation = message => {
